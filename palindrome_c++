@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isPalindrome(string wyraz){
+            int i,j;
+            for (i = 0,j = wyraz.size()-1; i < j; i++, j--)
+                {
+                if (wyraz[i] != wyraz[j])
+                break;
+                }
+                if (i < j)
+                {
+                  return false;
+                }
+                return true;
+
+}
+
+string longest_plaindrome(string ciag){
+    string palindrome;
+    string max_palindrome;
+    int roz = ciag.size()-1;
+
+    for(int i = 0;i<roz;i++){
+
+        for(int j = roz; j>0 ; j--){
+
+            int a;
+            a = j - i;
+            palindrome = ciag.substr(i, a);
+            cout<<palindrome<<endl;
+            if(isPalindrome(palindrome)&& max_palindrome.size() < a){
+                    max_palindrome = palindrome;
+        }
+    }
+    }
+
+
+
+    if (max_palindrome.size() > 2){
+        return  max_palindrome;
+    }
+    else{
+        max_palindrome="Nie_znazleziono";
+        return  max_palindrome;
+    }
+
+    }
+
+
+int main()
+{
+    string ciag_wyraz;
+
+    cout << "Wprowadz ciag" << endl;
+    cin>>ciag_wyraz;
+
+    cout<<endl<<endl<<"Najdluzszy palindrom to: "<<longest_plaindrome(ciag_wyraz);
+
+    return 0;
+}
